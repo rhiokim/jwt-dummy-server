@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint 'lib/**/*.js'",
+    "lint": "tslint -c tslint.json --format=stylish 'routes/**/*.@(ts/tsx)'",
     "lint:msg": "validate-commit-msg",
-    "start": "node .",
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
     "deploy": "npm run build && npm run docker:build",
     "commit": "git cz",
     "precommit": "npm run lint",
@@ -34,6 +35,7 @@
     "express-routemap": "^1.0.2"
   },
   "devDependencies": {
+    "@types/node": "^7.0.12",
     "commitizen": "^2.8.6",
     "conventional-changelog-cli": "^1.2.0",
     "cz-conventional-changelog": "^1.2.0",
@@ -42,8 +44,12 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "husky": "^0.13.3",
+    "nodemon": "^1.11.0",
     "nsp": "^2.6.2",
     "rimraf": "^2.5.4",
+    "ts-node": "^3.0.2",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2",
     "validate-commit-msg": "^2.8.2"
   },
   "config": {
