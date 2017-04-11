@@ -1,0 +1,65 @@
+{
+  "name": "seed-api-server",
+  "version": "0.2.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint -c tslint.json --format=stylish 'routes/**/*.@(ts/tsx)'",
+    "lint:msg": "validate-commit-msg",
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+    "deploy": "npm run build && npm run docker:build",
+    "commit": "git cz",
+    "precommit": "npm run lint",
+    "commitmsg": "npm run lint:msg",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
+    "docker:images": "docker images | grep seed-api-server",
+    "docker:rm": "docker rm -f seed-api-server",
+    "docker:run": "docker run -dit -p 8082:8082 --name seed-api-server seed-api-server:latest",
+    "docker:build": "docker build --tag seed-api-server . && npm run docker:images"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhiokim/seed-api-server.git"
+  },
+  "keywords": [],
+  "author": "Rhio Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhiokim/seed-api-server/issues"
+  },
+  "homepage": "https://github.com/rhiokim/seed-api-server#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-routemap": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "commitizen": "^2.8.6",
+    "conventional-changelog-cli": "^1.2.0",
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "husky": "^0.13.3",
+    "nodemon": "^1.11.0",
+    "nsp": "^2.6.2",
+    "rimraf": "^2.5.4",
+    "ts-node": "^3.0.2",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2",
+    "validate-commit-msg": "^2.8.2"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "preset": "angular",
+      "warnOnFail": false,
+      "maxSubjectLength": 100
+    },
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
+}
