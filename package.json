@@ -1,6 +1,6 @@
 {
-  "name": "seed-api-server",
-  "version": "0.2.0",
+  "name": "jwt-dummy-server",
+  "version": "0.2.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,22 +14,22 @@
     "precommit": "npm run lint",
     "commitmsg": "npm run lint:msg",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
-    "docker:images": "docker images | grep seed-api-server",
-    "docker:rm": "docker rm -f seed-api-server",
-    "docker:run": "docker run -dit -p 8082:8082 --name seed-api-server seed-api-server:latest",
-    "docker:build": "docker build --tag seed-api-server . && npm run docker:images"
+    "docker:images": "docker images | grep jwt-dummy-server",
+    "docker:rm": "docker rm -f jwt-dummy-server",
+    "docker:run": "docker run -dit -p 8082:8082 --name jwt-dummy-server jwt-dummy-server:latest",
+    "docker:build": "docker build --tag jwt-dummy-server . && npm run docker:images"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhiokim/seed-api-server.git"
+    "url": "git+https://github.com/rhiokim/jwt-dummy-server.git"
   },
   "keywords": [],
   "author": "Rhio Kim",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rhiokim/seed-api-server/issues"
+    "url": "https://github.com/rhiokim/jwt-dummy-server/issues"
   },
-  "homepage": "https://github.com/rhiokim/seed-api-server#readme",
+  "homepage": "https://github.com/rhiokim/jwt-dummy-server#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.14.0",
